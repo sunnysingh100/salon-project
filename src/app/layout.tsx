@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Montserrat, Marcellus} from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const marcellus = Marcellus({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${marcellus.variable} ${montserrat.variable} overflow-x-hidden`}
       >
+        <Header />
         {children}
       </body>
     </html>
