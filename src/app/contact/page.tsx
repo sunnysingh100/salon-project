@@ -1,14 +1,35 @@
 "use client";
+import {CursorContext} from "@/components/CursorProvider";
 import Form from "@/components/Form";
+import {motion} from "framer-motion";
 import Image from "next/image";
+import {useContext} from "react";
 
 function ContactPage() {
+  const {mouseEnterHandler, mouseLeaveHandler} = useContext(CursorContext) as {
+    mouseEnterHandler: () => void;
+    mouseLeaveHandler: () => void;
+  };
   return (
-    <section className="min-h-screen flex items-center overflow-x-hidden">
+    <motion.section
+      initial={{opacity: 0}}
+      animate={{opacity: 1, transition: {delay: 2}}}
+      className="min-h-screen flex items-center overflow-x-hidden"
+    >
       <div className="container mx-auto pt-48 pb-12 xl:pt-32 xl:pb-0">
         <div className="flex flex-col xl:flex-row gap-12 h-full">
           {/* text */}
-          <div className="flex flex-col flex-1 justify-center">
+          <motion.div
+            initial={{opacity: 0, x: -60}}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {delay: 2, duration: 0.8, ease: "easeInOut"},
+            }}
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            className="flex flex-col flex-1 justify-center"
+          >
             <h3 className="h3 mb-8 text-center xl:text-left">Contact info</h3>
             {/* items */}
             <div className="flex flex-col items-center xl:items-start gap-12">
@@ -55,15 +76,25 @@ function ContactPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
           {/* form */}
-          <div className="flex-1 bg-[#f0cfbc] w-full max-w-[580px] p-10 gap-4 mx-auto xl:mx-0">
+          <motion.div
+            initial={{opacity: 0, x: 60}}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {delay: 2.4, duration: 0.8, ease: "easeInOut"},
+            }}
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            className="flex-1 bg-[#f0cfbc] w-full max-w-[580px] p-10 gap-4 mx-auto xl:mx-0"
+          >
             <h3 className="h3 mb-8 text-center">Get in Touch</h3>
             <Form />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

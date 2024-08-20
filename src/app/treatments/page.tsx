@@ -1,14 +1,34 @@
 "use client";
-
+import {CursorContext} from "@/components/CursorProvider";
+import {motion} from "framer-motion";
 import Image from "next/image";
+import {useContext} from "react";
 
 function TreatmentPage() {
+  const {mouseEnterHandler, mouseLeaveHandler} = useContext(CursorContext) as {
+    mouseEnterHandler: () => void;
+    mouseLeaveHandler: () => void;
+  };
   return (
-    <section className="min-h-screen flex items-center overflow-x-hidden">
+    <motion.section
+      initial={{opacity: 0}}
+      animate={{opacity: 1, transition: {delay: 2}}}
+      className="min-h-screen flex items-center overflow-x-hidden"
+    >
       <div className="container flex items-center pt-48 pb-12 xl:pt-32 xl:pb-0">
         <div className="w-full h-full flex items-center justify-between">
           {/* text */}
-          <div className="flex flex-col items-start xl:max-w-[650px] text-center xl:text-left mx-auto">
+          <motion.div
+            initial={{opacity: 0, x: -60}}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {delay: 2, duration: 0.8, ease: "easeInOut"},
+            }}
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            className="flex flex-col items-start xl:max-w-[650px] text-center xl:text-left mx-auto"
+          >
             <h2 className="h2 mb-6 mx-auto max-w-[540px] xl:max-w-none ">
               Indulge in Our Luxurious Treatments
             </h2>
@@ -21,7 +41,7 @@ function TreatmentPage() {
               {/* item */}
               <div className="flex-1 flex flex-col justify-center items-center xl:items-start">
                 <div className="flex items-center gap-[12px] mb-2">
-                  <div className="w-[14px] h-[14px] bg-accent rounded-tl-[28px] rounded-bl-[28px] rounded-br-[22px] rounded-tr-[4px]" />
+                  <div className="w-[14px] h-[14px] bg-accent rounded-tl-[28px] rounded-bl-[28px] rounded-br-[22px] rounded-tr-[4px]"></div>
                   <h3 className="text-2xl">Classic Facial</h3>
                 </div>
                 <p className="pl-7 text-[15px]">
@@ -62,22 +82,31 @@ function TreatmentPage() {
             </div>
             {/* btn */}
             <button className="btn mx-auto xl:mx-0">Discover more</button>
-          </div>
+          </motion.div>
           {/* image */}
-          <div className="hidden xl:flex w-[384px] h-[534px] relative">
+          <motion.div
+            initial={{opacity: 0, x: 60}}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {delay: 2.4, duration: 0.8, ease: "easeInOut"},
+            }}
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            className="hidden xl:flex w-[384px] h-[534px] relative"
+          >
             <Image
               src="/assets/treatments/img.jpg"
               fill
-              sizes="(min-width: 768px) 100vw"
-              quality={100}
-              priority
               alt="treatment image"
+              priority
               className="object-contain"
+              sizes="50vw"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
