@@ -68,7 +68,9 @@ function TreatmentPage() {
             <Image
               src="/assets/treatments/img.jpg"
               fill
+              sizes="(min-width: 768px) 100vw"
               quality={100}
+              priority
               alt="treatment image"
               className="object-contain"
             />

@@ -2,7 +2,6 @@
 
 import StatsItem from "@/components/StatsItem";
 import Image from "next/image";
-import {useContext} from "react";
 function About() {
   return (
     <section className="min-h-screen flex items-center overflow-x-hidden">
@@ -14,6 +13,7 @@ function About() {
               src="/assets/about/img.jpg"
               alt="about image"
               fill
+              sizes="50vw"
               priority
               quality={100}
             />
