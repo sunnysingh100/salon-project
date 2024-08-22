@@ -15,7 +15,7 @@
     @apply font-primary;
   }
   .h1 {
-    @apply text-[64px] leading-none xl:text-[72px] xl:leading-[76px];
+    @apply text-[54px] leading-none xl:text-[72px] xl:leading-[76px];
   }
   .h2 {
     @apply text-[48px] leading-[54px];
