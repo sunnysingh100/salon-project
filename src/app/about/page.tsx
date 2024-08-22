@@ -4,6 +4,7 @@ import StatsItem from "@/components/StatsItem";
 import {motion} from "framer-motion";
 import Image from "next/image";
 import {useContext} from "react";
+
 function About() {
   const {mouseEnterHandler, mouseLeaveHandler} = useContext(CursorContext) as {
     mouseEnterHandler: () => void;
